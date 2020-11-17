@@ -4,11 +4,29 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"testing"
 	"time"
 )
 
 var moduleFolder = func() string { w, _ := os.Getwd(); return w }()
+
+// unix does not have this info
+func fileCreatedDate(d time.Time) time.Time {
+	if runtime.GOOS == "linux" {
+		return time.Time{}
+	}
+	return d
+}
+
+// unix does not have nano seconds in date
+func fileModifiedDate(d time.Time) time.Time {
+	if runtime.GOOS == "linux" {
+		t := time.Date(d.Year(), d.Month(), d.Day(), d.Hour(), d.Minute(), d.Second(), 0, d.Location())
+		return t
+	}
+	return d
+}
 
 func TestMediaInfo(t *testing.T) {
 	type args struct {
@@ -40,8 +58,8 @@ func TestMediaInfo(t *testing.T) {
 					IsStreamable:       true,
 					Title:              "This is the title",
 					EncodedDate:        time.Date(2020, 10, 20, 17, 38, 13, 0, time.UTC),
-					FileCreatedDate:    time.Date(2020, 11, 16, 17, 48, 13, 928000000, time.UTC),
-					FileModifiedDate:   time.Date(2020, 11, 17, 17, 19, 54, 510000000, time.UTC),
+					FileCreatedDate:    fileCreatedDate(time.Date(2020, 11, 16, 17, 48, 13, 928000000, time.UTC)),
+					FileModifiedDate:   fileModifiedDate(time.Date(2020, 11, 17, 17, 19, 54, 510000000, time.UTC)),
 					EncodedApplication: "mkvmerge v50.0.0 ('Awakenings') 64-bit",
 					EncodedLibrary:     "libebml v1.4.0 + libmatroska v1.6.2",
 					Duration:           4086.355,
@@ -179,8 +197,8 @@ func TestMediaInfo(t *testing.T) {
 					OverallBitRate:     336,
 					IsStreamable:       true,
 					EncodedDate:        time.Date(2020, 10, 20, 19, 04, 07, 0, time.UTC),
-					FileCreatedDate:    time.Date(2020, 11, 17, 17, 12, 56, 125000000, time.UTC),
-					FileModifiedDate:   time.Date(2020, 11, 17, 13, 30, 11, 701000000, time.UTC),
+					FileCreatedDate:    fileCreatedDate(time.Date(2020, 11, 17, 17, 12, 56, 125000000, time.UTC)),
+					FileModifiedDate:   fileModifiedDate(time.Date(2020, 11, 17, 13, 30, 11, 701000000, time.UTC)),
 					EncodedApplication: "mkvmerge v50.0.0 ('Awakenings') 64-bit",
 					EncodedLibrary:     "libebml v1.4.0 + libmatroska v1.6.2",
 					Duration:           138.396,
@@ -221,8 +239,8 @@ func TestMediaInfo(t *testing.T) {
 					OverallBitRate:     336,
 					IsStreamable:       true,
 					EncodedDate:        time.Date(2020, 10, 20, 19, 04, 07, 0, time.UTC),
-					FileCreatedDate:    time.Date(2020, 11, 16, 17, 48, 13, 902000000, time.UTC),
-					FileModifiedDate:   time.Date(2020, 11, 17, 13, 30, 11, 701000000, time.UTC),
+					FileCreatedDate:    fileCreatedDate(time.Date(2020, 11, 16, 17, 48, 13, 902000000, time.UTC)),
+					FileModifiedDate:   fileModifiedDate(time.Date(2020, 11, 17, 13, 30, 11, 701000000, time.UTC)),
 					EncodedApplication: "mkvmerge v50.0.0 ('Awakenings') 64-bit",
 					EncodedLibrary:     "libebml v1.4.0 + libmatroska v1.6.2",
 					Duration:           138.396,
