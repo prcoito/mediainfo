@@ -220,5 +220,6 @@ func formatTime(s string) float32 {
 func toFormatTimeStr(f float32) string {
 	// Rounded to int64 as soon as possible to avoid floating point precision errors
 	t := time.Unix(0, int64(f*1000)*1000*1000) // to nanoseconds.
+	t = t.UTC()
 	return t.Format("15:04:05.000")
 }
