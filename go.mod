@@ -1,4 +1,4 @@
-module mediainfo
+module github.com/prcoito/mediainfo
 
 go 1.15
 
