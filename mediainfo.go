@@ -138,6 +138,10 @@ func Inform(f string) (r Info, err error) {
 			}
 
 			for k, v := range track.Extra {
+				if !strings.HasPrefix(k, "_") {
+					// cases where menu has extra information
+					continue
+				}
 				// k = time
 				// v = lang:title
 				ss := formatExtra(k)
