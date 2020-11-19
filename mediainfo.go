@@ -149,11 +149,20 @@ func Inform(f string) (r Info, err error) {
 				st := formatTime(ss)
 				idx := strings.Index(v, ":")
 
+				var language, title string
+				if idx < 0 {
+					language = track.Language // default to track info if present
+					title = v
+				} else {
+					language = v[:idx]
+					title = v[idx+1:]
+				}
+
 				m.Entries = append(m.Entries, Entry{
 					StartTime:    st,
 					StartTimeStr: ss,
-					Language:     v[:idx],
-					Title:        v[idx+1:],
+					Language:     language,
+					Title:        title,
 				})
 			}
 			// sort now to make sure endtime last entry is properly set

@@ -1,3 +1,5 @@
 # MediaInfo libraries
 *.dll
 *.so
+
+mediainfo_loose_test.go
