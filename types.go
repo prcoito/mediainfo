@@ -163,13 +163,13 @@ type track struct {
 	IsStreamable          string
 	Title                 string
 	Movie                 string
-	FileCreatedDate       string `json:"File_Created_Date"`
-	EncodedDate           string `json:"Encoded_Date"`
-	FileModifiedDate      string `json:"File_Modified_Date"`
-	FileModifiedDateLocal string `json:"File_Modified_Date_Local"`
-	EncodedApplication    string `json:"Encoded_Application"`
-	EncodedLibrary        string `json:"Encoded_Library"`
-	EncodedLibraryVersion string `json:"Encoded_Library_Version"`
+	FileCreatedDate       string      `json:"File_Created_Date"`
+	EncodedDate           string      `json:"Encoded_Date"`
+	FileModifiedDate      string      `json:"File_Modified_Date"`
+	FileModifiedDateLocal string      `json:"File_Modified_Date_Local"`
+	EncodedApplication    string      `json:"Encoded_Application"`
+	EncodedLibrary        interface{} `json:"Encoded_Library"` // some encoded libraries are json objects
+	EncodedLibraryVersion string      `json:"Encoded_Library_Version"`
 
 	StreamOrder        string
 	ID                 string

@@ -1,6 +1,7 @@
 package mediainfo
 
 import (
+	"fmt"
 	"path/filepath"
 	"sort"
 	"strconv"
@@ -51,7 +52,7 @@ func Inform(f string) (r Info, err error) {
 			r.General.FileCreatedDate = toTime(track.FileCreatedDate)
 			r.General.FileModifiedDate = toTime(track.FileModifiedDate)
 			r.General.EncodedApplication = track.EncodedApplication
-			r.General.EncodedLibrary = track.EncodedLibrary
+			r.General.EncodedLibrary = fmt.Sprintf("%s", track.EncodedLibrary)
 			r.General.EncodedLibraryVersion = track.EncodedLibraryVersion
 			r.General.Title = track.Title
 		case "Video":
@@ -80,7 +81,7 @@ func Inform(f string) (r Info, err error) {
 				BitDepth:               toUint(track.BitDepth),
 				StreamSize:             toUint(track.StreamSize),
 				StreamSizeProportion:   toFloat(track.StreamSizeProportion),
-				EncodedLibrary:         track.EncodedLibrary,
+				EncodedLibrary:         fmt.Sprintf("%s", track.EncodedLibrary),
 				EncodedLibraryName:     track.EncodedLibraryName,
 				EncodedLibraryVersion:  track.EncodedLibraryVersion,
 				EncodedLibrarySettings: track.EncodedLibrarySettings,
