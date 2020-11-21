@@ -78,6 +78,7 @@ type Video struct {
 	Default                bool
 	Forced                 bool
 	B3D                    bool
+	Title                  string
 }
 
 // Audio represents a audio track information present in Info
@@ -105,6 +106,7 @@ type Audio struct {
 	Language                 string
 	Default                  bool
 	Forced                   bool
+	Title                    string
 }
 
 // Text represents a text track (subtitles) information present in Info
@@ -123,6 +125,7 @@ type Text struct {
 	Language     string
 	Default      bool
 	Forced       bool
+	Title        string
 }
 
 // Menu represents the Menu track (also known as Chapter) present in Info

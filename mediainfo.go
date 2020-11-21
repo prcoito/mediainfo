@@ -88,6 +88,7 @@ func Inform(f string) (r Info, err error) {
 				Default:                toBool(track.Default),
 				Forced:                 toBool(track.Forced),
 				B3D:                    track.MultiViewCount != "",
+				Title:                  track.Title,
 			})
 		case "Audio":
 			r.AudioTracks = append(r.AudioTracks, Audio{
@@ -114,6 +115,7 @@ func Inform(f string) (r Info, err error) {
 				StreamSize:               toUint(track.StreamSize),
 				StreamSizeProportion:     toFloat(track.StreamSizeProportion),
 				UniqueID:                 track.UniqueID,
+				Title:                    track.Title,
 			})
 		case "Text":
 			r.TextTracks = append(r.TextTracks, Text{
@@ -131,6 +133,7 @@ func Inform(f string) (r Info, err error) {
 				StreamSize:   toUint(track.StreamSize),
 				Order:        toUint(track.TypeOrder),
 				UniqueID:     track.UniqueID,
+				Title:        track.Title,
 			})
 		case "Menu":
 			m := Menu{
