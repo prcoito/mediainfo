@@ -59,7 +59,7 @@ func TestMediaInfo(t *testing.T) {
 					Title:              "This is the title",
 					EncodedDate:        time.Date(2020, 10, 20, 17, 38, 13, 0, time.UTC),
 					FileCreatedDate:    fileCreatedDate(time.Date(2020, 11, 16, 17, 48, 13, 928000000, time.UTC)),
-					FileModifiedDate:   fileModifiedDate(time.Date(2020, 11, 17, 17, 19, 54, 510000000, time.UTC)),
+					FileModifiedDate:   fileModifiedDate(time.Date(2020, 11, 25, 19, 9, 36, 866000000, time.UTC)),
 					EncodedApplication: "mkvmerge v50.0.0 ('Awakenings') 64-bit",
 					EncodedLibrary:     "libebml v1.4.0 + libmatroska v1.6.2",
 					Duration:           4086.355,
@@ -118,6 +118,7 @@ func TestMediaInfo(t *testing.T) {
 					Language:                 "en",
 					Default:                  true,
 					Forced:                   false,
+					Title:                    "Audio track name",
 				}},
 				MenuTracks: []Menu{{
 					Duration: 4086.355,
